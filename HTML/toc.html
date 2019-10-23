@@ -1,0 +1,636 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Board</title>
+    
+    <style>
+        .table_of_contents > div {
+            text-align: center;
+        }
+
+        .table_of_contents {
+            display: grid;
+            grid-template-columns: repeat(3, [col] minmax(20px, 1fr));
+            grid-gap: 40px 20px;
+        }
+
+        .move_five > div {
+            text-align: center;
+        }
+
+        .move_five {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            border: 1px solid rgb(0,0,0);
+            border-radius: 1px;
+        }
+
+        .move_six {
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+
+        .new_row {
+            grid-column-start: 1;
+            grid-column-end: 2;        
+        }
+
+        .chapter_grid > div {
+            text-align: center;
+        }
+
+        .chapter_grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px 5px;
+        }
+
+        .split_cell_toc {
+            display: grid;
+            grid-template-columns: 0% 70% 30% 0%;
+            //border: 1px solid rgb(0,0,0);
+            //border-radius: 1px;
+            padding: 30px 5px;
+        }
+
+        .split_cell {
+            display: grid;
+            grid-template-columns: 0% 70% 30% 0%;
+            padding: 2px 5px;
+        }
+
+        .border {
+            border: 1px solid rgb(0,0,0);
+            border-radius: 1px;
+        }
+
+        .split_cell > div {
+            text-align: center;
+        }
+
+
+
+        .split_next_move > div {
+            text-align: center;
+            //border-radius: 1px;
+            //border: 1px solid rgb(0,0,0);
+        }
+
+        .split_next_move {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            grid-gap: 1px;
+        }
+
+        .limit_width {
+            width: 33%;
+        }
+
+        .text_right {
+            text-align: right;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="table_of_contents">
+   <div class="split_cell_toc">
+      <div>&nbsp;</div>
+      <div class="jgoboard" data-game-blurb="First Four 1: 9287 games" data-jgostyle="JGO.BOARD.smallBW">
+      .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .B.  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  O  .  .  .  .  .  .  .  .  .  .  .  X  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .D.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .C.  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .E.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  O  .  .  .  .  .  .  .  .  .  .  .  X  .  .  .  
+.  .  .F.  .  .A.  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+
+      </div>
+    <div class="split_next_move">
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>A:</div>
+      <div>31.0%</div>
+      <div>B:</div>
+      <div>31.0%</div>
+      <div>C:</div>
+      <div>27.2%</div>
+      <div>D:</div>
+      <div>3.2%</div>
+      <div>E:</div>
+      <div>3.2%</div>
+      <div>F:</div>
+      <div>1.7%</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+    </div>
+      <div>&nbsp;</div>
+   </div>
+   <div class="split_cell_toc">
+      <div>&nbsp;</div>
+      <div class="jgoboard" data-game-blurb="First Four 2: 9209 games" data-jgostyle="JGO.BOARD.smallBW">
+      .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .F.  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  O  .  .  .  .  .  .  .  .  .  .  .  X  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .E.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .D.B.  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .C.  .  
+.  .  .  O  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .A.  .  .  .  .  .  .  .  .  X  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+
+      </div>
+    <div class="split_next_move">
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>A:</div>
+      <div>38.1%</div>
+      <div>B:</div>
+      <div>28.7%</div>
+      <div>C:</div>
+      <div>11.2%</div>
+      <div>D:</div>
+      <div>7.0%</div>
+      <div>E:</div>
+      <div>4.5%</div>
+      <div>F:</div>
+      <div>3.2%</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+    </div>
+      <div>&nbsp;</div>
+   </div>
+   <div class="split_cell_toc">
+      <div>&nbsp;</div>
+      <div class="jgoboard" data-game-blurb="First Four 3: 7552 games" data-jgostyle="JGO.BOARD.smallBW">
+      .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  O  .  .  .  .  .  .  .  .  .  .  .  X  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  O  .  .  .  .  .  .  .  .  .  .E.C.  X  .  .  
+.  .  .  .  .  .A.  .  .  .  .F.  .  .D.B.  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+
+      </div>
+    <div class="split_next_move">
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>A:</div>
+      <div>48.7%</div>
+      <div>B:</div>
+      <div>29.6%</div>
+      <div>C:</div>
+      <div>5.0%</div>
+      <div>D:</div>
+      <div>5.3%</div>
+      <div>E:</div>
+      <div>4.7%</div>
+      <div>F:</div>
+      <div>2.1%</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+    </div>
+      <div>&nbsp;</div>
+   </div>
+   <div class="split_cell_toc">
+      <div>&nbsp;</div>
+      <div class="jgoboard" data-game-blurb="First Four 4: 7501 games" data-jgostyle="JGO.BOARD.smallBW">
+      .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  O  .  .  .  .  .  .  .  .  .  .  .  X  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .C.B.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .E.  X  .  .  
+.  .  .  O  .  .  .  .  .  .  .  .F.  .D.A.  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+
+      </div>
+    <div class="split_next_move">
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>A:</div>
+      <div>34.2%</div>
+      <div>B:</div>
+      <div>24.5%</div>
+      <div>C:</div>
+      <div>22.3%</div>
+      <div>D:</div>
+      <div>8.0%</div>
+      <div>E:</div>
+      <div>3.9%</div>
+      <div>F:</div>
+      <div>1.7%</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+    </div>
+      <div>&nbsp;</div>
+   </div>
+   <div class="split_cell_toc">
+      <div>&nbsp;</div>
+      <div class="jgoboard" data-game-blurb="First Four 5: 4680 games" data-jgostyle="JGO.BOARD.smallBW">
+      .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .A.  .  .  .  .E.  .  .C.B.  .  .  .  
+.  .  .  O  .  .  .  .  .  .  .  .  .  .D.F.  X  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  O  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  X  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+
+      </div>
+    <div class="split_next_move">
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>A:</div>
+      <div>62.8%</div>
+      <div>B:</div>
+      <div>18.4%</div>
+      <div>C:</div>
+      <div>10.5%</div>
+      <div>D:</div>
+      <div>3.1%</div>
+      <div>E:</div>
+      <div>1.3%</div>
+      <div>F:</div>
+      <div>1.3%</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+    </div>
+      <div>&nbsp;</div>
+   </div>
+   <div class="split_cell_toc">
+      <div>&nbsp;</div>
+      <div class="jgoboard" data-game-blurb="First Four 6: 3982 games" data-jgostyle="JGO.BOARD.smallBW">
+      .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  O  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  X  .  .  .  
+.  .  .  .C.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  O  .  .  .  .  .  .  .  .  .  .F.E.  X  .  .  
+.  .  .  .  .  .B.  .  .  .  .  .  .  .D.A.  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+
+      </div>
+    <div class="split_next_move">
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>A:</div>
+      <div>37.0%</div>
+      <div>B:</div>
+      <div>32.5%</div>
+      <div>C:</div>
+      <div>16.0%</div>
+      <div>D:</div>
+      <div>4.5%</div>
+      <div>E:</div>
+      <div>2.5%</div>
+      <div>F:</div>
+      <div>1.9%</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+    </div>
+      <div>&nbsp;</div>
+   </div>
+   <div class="split_cell_toc">
+      <div>&nbsp;</div>
+      <div class="jgoboard" data-game-blurb="First Four 7: 3844 games" data-jgostyle="JGO.BOARD.smallBW">
+      .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  O  .  .  .  .  .  .  .  .E.  .D.B.  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .F.  X  .  .  
+.  .  .C.A.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  O  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  X  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+
+      </div>
+    <div class="split_next_move">
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>A:</div>
+      <div>32.3%</div>
+      <div>B:</div>
+      <div>28.0%</div>
+      <div>C:</div>
+      <div>17.2%</div>
+      <div>D:</div>
+      <div>15.6%</div>
+      <div>E:</div>
+      <div>1.6%</div>
+      <div>F:</div>
+      <div>1.3%</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+    </div>
+      <div>&nbsp;</div>
+   </div>
+   <div class="split_cell_toc">
+      <div>&nbsp;</div>
+      <div class="jgoboard" data-game-blurb="First Four 8: 2397 games" data-jgostyle="JGO.BOARD.smallBW">
+      .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  O  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  X  .  .  .  
+.  .  .D.A.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .E.B.  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .F.  .  
+.  .  .  O  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .C.  .  .  .  .  .  .  .  .  X  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+
+      </div>
+    <div class="split_next_move">
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>A:</div>
+      <div>41.2%</div>
+      <div>B:</div>
+      <div>15.4%</div>
+      <div>C:</div>
+      <div>13.9%</div>
+      <div>D:</div>
+      <div>7.8%</div>
+      <div>E:</div>
+      <div>7.1%</div>
+      <div>F:</div>
+      <div>3.3%</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+    </div>
+      <div>&nbsp;</div>
+   </div>
+   <div class="split_cell_toc">
+      <div>&nbsp;</div>
+      <div class="jgoboard" data-game-blurb="First Four 9: 2326 games" data-jgostyle="JGO.BOARD.smallBW">
+      .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  O  .  .  .  .  .  .  .  .  .  .  .  X  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .E.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .F.A.  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .C.B.  .  .  .  .  .  .  .  .  .  .  .  .D.  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  O  .  .  .  .  .  .  .  .  .  .  .  X  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+
+      </div>
+    <div class="split_next_move">
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>A:</div>
+      <div>23.2%</div>
+      <div>B:</div>
+      <div>22.8%</div>
+      <div>C:</div>
+      <div>19.9%</div>
+      <div>D:</div>
+      <div>15.5%</div>
+      <div>E:</div>
+      <div>6.1%</div>
+      <div>F:</div>
+      <div>2.8%</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+    </div>
+      <div>&nbsp;</div>
+   </div>
+   <div class="split_cell_toc">
+      <div>&nbsp;</div>
+      <div class="jgoboard" data-game-blurb="First Four 10: 2238 games" data-jgostyle="JGO.BOARD.smallBW">
+      .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  O  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  X  .  .  .  
+.  .  .C.A.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .D.F.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .B.  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  O  .  .  .  .  .  .  .  .  .  .  .  X  .  .  .  
+.  .  .  .  .  .E.  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+
+      </div>
+    <div class="split_next_move">
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>A:</div>
+      <div>62.6%</div>
+      <div>B:</div>
+      <div>14.7%</div>
+      <div>C:</div>
+      <div>10.0%</div>
+      <div>D:</div>
+      <div>4.4%</div>
+      <div>E:</div>
+      <div>2.1%</div>
+      <div>F:</div>
+      <div>1.7%</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+    </div>
+      <div>&nbsp;</div>
+   </div>
+   <div class="split_cell_toc">
+      <div>&nbsp;</div>
+      <div class="jgoboard" data-game-blurb="First Four 11: 1875 games" data-jgostyle="JGO.BOARD.smallBW">
+      .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  O  .  .  .  .  
+.  .  .  O  .  .  .  .  .  .  .D.E.C.  .  .  X  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .F.  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .A.B.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  X  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+
+      </div>
+    <div class="split_next_move">
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>A:</div>
+      <div>48.9%</div>
+      <div>B:</div>
+      <div>23.8%</div>
+      <div>C:</div>
+      <div>9.5%</div>
+      <div>D:</div>
+      <div>8.2%</div>
+      <div>E:</div>
+      <div>5.7%</div>
+      <div>F:</div>
+      <div>0.5%</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+    </div>
+      <div>&nbsp;</div>
+   </div>
+   <div class="split_cell_toc">
+      <div>&nbsp;</div>
+      <div class="jgoboard" data-game-blurb="First Four 12: 1647 games" data-jgostyle="JGO.BOARD.smallBW">
+      .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  O  .  .  .  .  .  .  .  .  .  .  .  X  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .F.D.  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  O  .  .B.C.  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .A.E.  .  .  .  .  .  .  .  .  X  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+
+      </div>
+    <div class="split_next_move">
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>A:</div>
+      <div>50.5%</div>
+      <div>B:</div>
+      <div>42.2%</div>
+      <div>C:</div>
+      <div>2.3%</div>
+      <div>D:</div>
+      <div>1.0%</div>
+      <div>E:</div>
+      <div>1.0%</div>
+      <div>F:</div>
+      <div>0.9%</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+      <div>&nbsp;</div><div>&nbsp;</div>
+    </div>
+      <div>&nbsp;</div>
+   </div>
+</div>
+<script type="text/javascript" src="dist/jgoboard-latest.js"></script>
+<script type="text/javascript" src="small/board.js"></script>
+<!-- This needs to happen after all divs are loaded, so put it below the divs -->
+<script type="text/javascript">JGO.auto.init(document, JGO);</script>
+
+</body>
+</html>
+
