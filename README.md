@@ -2,7 +2,7 @@
 
 A database, command line search engine, and Angular single page application for the game of Go that allows position searches on a collection of game records.
 
-###What is Go?
+### What is Go?
 
 Go is a two player Asian board game played on a grid of 19 by 19 lines. One player uses black stones, the other uses
 white. Players take turns placing a single stone on the board at a time. Stones do not move once placed. The goal of
@@ -11,7 +11,7 @@ the game is to surround an many empty intersections (territory) as possible.
 Learn Go:
 https://www.usgo.org/learn-play
 
-###What's new in this version
+### What's new in this version
 
 After writing the first version of this database, I spent some time learning the MEAN stack. Then I decided to convert BGO to an Angular Single Page Application to practice what I had learned.
 
@@ -23,19 +23,19 @@ The next version will include a JavaScript Go board that can be clicked on to in
 
 The report generator was removed and will be rewritten.
 
-##Features
+## Features
 
 * BGO package for database access, go board with rules of go, game record parser, coordinate conversion, diagram generator.
 * BSHELL command line interface for selecting database, importing games, rebuilding hashes, and performing simple searches on a text based board.
 * Angular Single Access Page with a JavaScript Go board that allows position searches and game review.
 
-##Code Use
+## Code Use
 
 * Prompt-Toolkit command line interface https://github.com/mpirnat/dndme
 * Game of Go implementation https://github.com/brilee/go_implementation/blob/master/go_naive.py
 
 
-##How to run
+## How to run
 
 To start the shell or flask server:
     
@@ -47,11 +47,11 @@ To start the Angular SPA:
     
     ng serve
   
-##Angular SPA Screenshot
+## Angular SPA Screenshot
 
 ![Screenshot](screenshots/demo.png)  
   
-##Command Line Interface Example
+## Command Line Interface Example
 
     [brian@kmhvn bgo]$ python -m bshell.bshell
     Start /home/brian/Projects/git/bgosite/bgo/bshell  Work /home/brian/Projects/git/bgosite/bgo
